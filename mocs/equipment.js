@@ -1,0 +1,40 @@
+const data = [
+  {
+    titleAm: "Чернение шин  AM",
+    titleRu: "Чернение шин Ru",
+    titleEn: "Чернение шин En",
+    titleGe: "Чернение шин GE",
+    descAm: "Чернение шин AM",
+    descRu: "Чернение шин RU",
+    descEn: "Чернение шин DESC EN",
+    descGe: "Чернение шин Ge",
+    updatedAt: "2023-03-22T10:39:52.652Z",
+    createdAt: "2023-03-22T10:39:52.652Z",
+  },
+  {
+    titleAm: "JSX Разменник  AM",
+    titleRu: "JSX Разменник Ru",
+    titleEn: "JSX Разменник En",
+    titleGe: "JSX Разменник GE",
+    descAm: "JSX Разменник AM",
+    descRu: "JSX Разменник RU",
+    descEn: "JSX Разменник DESC EN",
+    descGe: "JSX Разменник Ge",
+    updatedAt: "2023-03-22T10:39:52.652Z",
+    createdAt: "2023-03-22T10:39:52.652Z",
+  },
+  {
+    titleAm: "JSX Стерилизация салона  AM",
+    titleRu: "JSX Стерилизация салона Ru",
+    titleEn: "JSX Стерилизация салона En",
+    titleGe: "JSX Стерилизация салона GE",
+    descAm: "JSX Стерилизация салона AM",
+    descRu: "JSX Стерилизация салона RU",
+    descEn: "JSX Стерилизация салона DESC EN",
+    descGe: "JSX Стерилизация салона Ge",
+    updatedAt: "2023-03-22T10:39:52.652Z",
+    createdAt: "2023-03-22T10:39:52.652Z",
+  },
+];
+
+module.exports = data;

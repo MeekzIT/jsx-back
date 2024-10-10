@@ -1,0 +1,40 @@
+const data = [
+  {
+    titleAm: "JSX PRO1  AM",
+    titleRu: "JSX PRO1 Ru",
+    titleEn: "JSX PRO1 En",
+    titleGe: "JSX PRO1 GE",
+    descAm: "JSX PRO1 AM",
+    descRu: "JSX PRO1 RU",
+    descEn: "JSX PRO1 DESC EN",
+    descGe: "JSX PRO1 Ge",
+    updatedAt: "2023-03-22T10:39:52.652Z",
+    createdAt: "2023-03-22T10:39:52.652Z",
+  },
+  {
+    titleAm: "JSX PRO2  AM",
+    titleRu: "JSX PRO2 Ru",
+    titleEn: "JSX PRO2 En",
+    titleGe: "JSX PRO2 GE",
+    descAm: "JSX PRO2 AM",
+    descRu: "JSX PRO2 RU",
+    descEn: "JSX PRO2 DESC EN",
+    descGe: "JSX PRO2 Ge",
+    updatedAt: "2023-03-22T10:39:52.652Z",
+    createdAt: "2023-03-22T10:39:52.652Z",
+  },
+  {
+    titleAm: "JSX PRO3  AM",
+    titleRu: "JSX PRO3 Ru",
+    titleEn: "JSX PRO3 En",
+    titleGe: "JSX PRO3 GE",
+    descAm: "JSX PRO3 AM",
+    descRu: "JSX PRO3 RU",
+    descEn: "JSX PRO3 DESC EN",
+    descGe: "JSX PRO3 Ge",
+    updatedAt: "2023-03-22T10:39:52.652Z",
+    createdAt: "2023-03-22T10:39:52.652Z",
+  },
+];
+
+module.exports = data;
