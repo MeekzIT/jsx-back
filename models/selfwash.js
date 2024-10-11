@@ -32,7 +32,6 @@ module.exports = (sequelize, DataTypes) => {
 
   SelfWash.hasMany(SelfWashImage, {
     foreignKey: "reletedId",
-    as: "images",
   });
 
   return SelfWash;

@@ -4,10 +4,10 @@ const data = [
     titleRu: "module A Ru",
     titleEn: "module A En",
     titleGe: "module A GE",
-    descAm: "module A DESC AM",
-    descRu: "module A DESC Ru",
-    descEn: "module A DESC En",
-    descGe: "module A DESC GE",
+    descAm: '[{"type":"paragaph","children":[{"text":""}]}]',
+    descRu: '[{"type":"paragaph","children":[{"text":""}]}]',
+    descEn: '[{"type":"paragaph","children":[{"text":""}]}]',
+    descGe: '[{"type":"paragaph","children":[{"text":""}]}]',
     imageAm:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s",
     imageRu:
@@ -24,10 +24,10 @@ const data = [
     titleRu: "module B Ru",
     titleEn: "module B En",
     titleGe: "module B Ge",
-    descAm: "module B DESC AM",
-    descRu: "module B DESC Ru",
-    descEn: "module B DESC En",
-    descGe: "module B DESC Ge",
+    descAm: '[{"type":"paragaph","children":[{"text":""}]}]',
+    descRu: '[{"type":"paragaph","children":[{"text":""}]}]',
+    descEn: '[{"type":"paragaph","children":[{"text":""}]}]',
+    descGe: '[{"type":"paragaph","children":[{"text":""}]}]',
     imageAm:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s",
     imageRu:

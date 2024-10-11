@@ -36,7 +36,6 @@ module.exports = (sequelize, DataTypes) => {
 
   Modules.hasMany(ModuleImage, {
     foreignKey: "reletedId",
-    // as: "images",
   });
 
   return Modules;
