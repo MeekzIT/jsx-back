@@ -30,7 +30,7 @@ module.exports = {
       descRu: {
         type: Sequelize.TEXT,
       },
-      destEn: {
+      descEn: {
         type: Sequelize.TEXT,
       },
       descGe: {

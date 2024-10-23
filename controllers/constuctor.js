@@ -1,4 +1,4 @@
-const { where } = require("sequelize");
+const { where, fn, col } = require("sequelize");
 
 const Constructor = require("../models").Constuctor;
 const Item = require("../models").ConstuctorItem;
@@ -40,17 +40,12 @@ const destroy = async (req, res) => {
 const getAll = async (req, res) => {
   try {
     const services = await Constructor.findAll({
-      //   include: [
-      //     {
-      //       model: Item,
-      //       include: {
-      //         model: Option,
-      //         include: {
-      //           model: OptionItem,
-      //         },
-      //       },
-      //     },
-      //   ],
+      include: [
+        {
+          model: Item,
+        },
+      ],
+      order: [[{ model: Item }, "order", "ASC"]],
     });
     return res.json({ succes: true, data: services });
   } catch (e) {
@@ -75,12 +70,14 @@ const getOne = async (req, res) => {
           },
         },
       ],
+      order: [[{ model: Item }, "order", "ASC"]],
     });
     return res.json({ succes: true, data: service });
   } catch (e) {
     console.log("something went wro ng", e);
   }
 };
+
 const getPrice = async (req, res) => {
   try {
     const selectedData = req.body;
@@ -217,13 +214,15 @@ const updateConstuctorItemsOrder = async (req, res) => {
   try {
     const reorderedItems = req.body.items; // Expecting an array of items with 'id' and 'order'
 
-    const updatePromises = reorderedItems.map((item) =>
-      Item.update({ order: item.order }, { where: { id: item.id } })
-    );
+    const updatePromises = reorderedItems.map((item) => {
+      console.log(item.order, item.nameRu, "item");
+
+      return Item.update({ order: item.order }, { where: { id: item.id } });
+    });
     await Promise.all(updatePromises);
     return res.json({ succes: true });
   } catch (error) {
-    console.log("something went wrong", e);
+    console.log("something went wrong", error);
   }
 };
 
@@ -241,6 +240,8 @@ const editItem = async (req, res) => {
   try {
     const data = req.body;
     const service = await Item.findOne({ where: { id: data.id } });
+    console.log(service, "dddd");
+
     await service.update(data);
     return res.json({ succes: true, data: service });
   } catch (e) {
@@ -348,9 +349,28 @@ const editOptionItem = async (req, res) => {
   }
 };
 
+const getOptionItem = async (req, res) => {
+  try {
+    const { id } = req.query;
+    const service = await OptionItem.findAll({
+      where: { reletedId: id },
+      include: [
+        {
+          model: ItemOption,
+        },
+      ],
+    });
+    return res.json({ succes: true, data: service });
+  } catch (e) {
+    console.log("something went wro ng", e);
+  }
+};
+
 const destroyOptionItem = async (req, res) => {
   try {
     const data = req.body;
+    console.log(data, "------------------------");
+
     await OptionItem.destroy({ where: { id: data.id } });
     return res.json({ succes: true });
   } catch (e) {
@@ -373,6 +393,8 @@ const createOptionOption = async (req, res) => {
 const editOptionOption = async (req, res) => {
   try {
     const data = req.body;
+    console.log(data, "--------");
+
     const service = await ItemOption.findOne({ where: { id: data.id } });
     await service.update(data);
     return res.json({ succes: true, data: service });
@@ -413,4 +435,5 @@ module.exports = {
   destroyOptionOption,
   getOptionItems,
   getPrice,
+  getOptionItem,
 };

@@ -13,7 +13,7 @@ router.get("/single", controller.getOne);
 // -------------------- item --------------------
 router.post("/item", adminMiddleware, controller.createItem);
 router.post("/drag", adminMiddleware, controller.updateConstuctorItemsOrder);
-router.post("item/edit", adminMiddleware, controller.editItem);
+router.post("/item/edit", adminMiddleware, controller.editItem);
 router.post("/item/destroy", adminMiddleware, controller.destroyItem);
 
 // -------------------- option --------------------
@@ -25,7 +25,7 @@ router.get("/option", controller.getOptionItems);
 // -------------------- option item --------------------
 router.post("/option/item", adminMiddleware, controller.createOptionItem);
 router.post(
-  "/option/drag",
+  "/option/item/drag",
   adminMiddleware,
   controller.updateConstuctorOptionItemsOrder
 );
@@ -35,10 +35,15 @@ router.post(
   adminMiddleware,
   controller.destroyOptionItem
 );
+router.get("/option/item", controller.getOptionItem);
 
 // -------------------- itrm option --------------------
-router.post("/item/option", adminMiddleware, controller.createOption);
-router.post("/item/option/edit", adminMiddleware, controller.editOption);
-router.post("/item/option/destroy", adminMiddleware, controller.destroyOption);
+router.post("/item/option", adminMiddleware, controller.createOptionOption);
+router.post("/item/option/edit", adminMiddleware, controller.editOptionOption);
+router.post(
+  "/item/option/destroy",
+  adminMiddleware,
+  controller.destroyOptionOption
+);
 
 module.exports = router;

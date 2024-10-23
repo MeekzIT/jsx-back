@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       nameGe: DataTypes.STRING,
       descAm: DataTypes.TEXT,
       descRu: DataTypes.TEXT,
-      destEn: DataTypes.TEXT,
+      descEn: DataTypes.TEXT,
       descGe: DataTypes.TEXT,
       order: DataTypes.INTEGER,
       require: DataTypes.BOOLEAN,

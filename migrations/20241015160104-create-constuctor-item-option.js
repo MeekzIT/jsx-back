@@ -30,7 +30,7 @@ module.exports = {
       descRu: {
         type: Sequelize.TEXT,
       },
-      destEn: {
+      descEn: {
         type: Sequelize.TEXT,
       },
       descGe: {
@@ -38,6 +38,9 @@ module.exports = {
       },
       price: {
         type: Sequelize.STRING,
+      },
+      showIn: {
+        type: Sequelize.BOOLEAN,
       },
       image: {
         type: Sequelize.STRING,
