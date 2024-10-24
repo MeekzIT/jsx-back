@@ -46,4 +46,11 @@ router.post(
   controller.destroyOptionOption
 );
 
+//------------------ order ------------------
+
+router.post("/order", controller.createOrder);
+router.post("/order/edit", adminMiddleware, controller.editOrder);
+router.post("/order/destroy", adminMiddleware, controller.deleteOrder);
+router.get("/order", adminMiddleware, controller.getAllOrders);
+
 module.exports = router;

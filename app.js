@@ -15,6 +15,7 @@ var equipmentRouter = require("./routes/equipment");
 var authRouter = require("./routes/auth");
 var constructorRouter = require("./routes/constructor");
 var spareRouter = require("./routes/spare");
+var questionRouter = require("./routes/question");
 
 var app = express();
 app.use(cors());
@@ -37,6 +38,7 @@ app.use("/equip", equipmentRouter);
 app.use("/auth", authRouter);
 app.use("/spare", spareRouter);
 app.use("/constuctor", constructorRouter);
+app.use("/question", questionRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

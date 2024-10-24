@@ -5,6 +5,7 @@ const Item = require("../models").ConstuctorItem;
 const Option = require("../models").ConstuctorItemOption;
 const OptionItem = require("../models").ConstuctorOptionItem;
 const ItemOption = require("../models").ConstuctorItemOptionItemOption;
+const Order = require("../models").Order;
 
 const create = async (req, res) => {
   try {
@@ -369,7 +370,6 @@ const getOptionItem = async (req, res) => {
 const destroyOptionItem = async (req, res) => {
   try {
     const data = req.body;
-    console.log(data, "------------------------");
 
     await OptionItem.destroy({ where: { id: data.id } });
     return res.json({ succes: true });
@@ -393,8 +393,6 @@ const createOptionOption = async (req, res) => {
 const editOptionOption = async (req, res) => {
   try {
     const data = req.body;
-    console.log(data, "--------");
-
     const service = await ItemOption.findOne({ where: { id: data.id } });
     await service.update(data);
     return res.json({ succes: true, data: service });
@@ -408,6 +406,57 @@ const destroyOptionOption = async (req, res) => {
     const data = req.body;
     await ItemOption.destroy({ where: { id: data.id } });
     return res.json({ succes: true });
+  } catch (e) {
+    console.log("something went wro ng", e);
+  }
+};
+
+// -------- order
+
+const createOrder = async (req, res) => {
+  try {
+    const data = req.body;
+    const newService = await Order.create({ ...data, archive: false });
+    return res.json({ succes: true, data: newService });
+  } catch (e) {
+    console.log("something went wro ng", e);
+  }
+};
+
+const editOrder = async (req, res) => {
+  try {
+    const data = req.body;
+    const service = await Order.findOne({ where: { id: data.id } });
+    await service.update(data);
+    return res.json({ succes: true, data: service });
+  } catch (e) {
+    console.log("something went wro ng", e);
+  }
+};
+
+const deleteOrder = async (req, res) => {
+  try {
+    const data = req.body;
+    await Order.destroy({ where: { id: data.id } });
+    return res.json({ succes: true });
+  } catch (e) {
+    console.log("something went wro ng", e);
+  }
+};
+
+const getAllOrders = async (req, res) => {
+  try {
+    const newOrders = await Order.findAll({
+      where: {
+        archive: false,
+      },
+    });
+    const oldOrders = await Order.findAll({
+      where: {
+        archive: true,
+      },
+    });
+    return res.json({ succes: true, newOrders, oldOrders });
   } catch (e) {
     console.log("something went wro ng", e);
   }
@@ -436,4 +485,8 @@ module.exports = {
   getOptionItems,
   getPrice,
   getOptionItem,
+  createOrder,
+  editOrder,
+  deleteOrder,
+  getAllOrders,
 };
