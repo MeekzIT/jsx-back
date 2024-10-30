@@ -285,7 +285,7 @@ const getOptionItems = async (req, res) => {
 const createOption = async (req, res) => {
   try {
     const data = req.body;
-    const newService = await Option.create(data);
+    const newService = await Option.create({data});
     return res.json({ succes: true, data: newService });
   } catch (e) {
     console.log("something went wro ng", e);

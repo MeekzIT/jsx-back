@@ -25,6 +25,8 @@ module.exports = (sequelize, DataTypes) => {
       image: DataTypes.STRING,
       price: DataTypes.STRING,
       showIn: DataTypes.BOOLEAN,
+      width: DataTypes.STRING,
+      height: DataTypes.STRING,
     },
     {
       sequelize,
