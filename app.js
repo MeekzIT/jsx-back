@@ -18,6 +18,7 @@ var spareRouter = require("./routes/spare");
 var questionRouter = require("./routes/question");
 var aboutRouter = require("./routes/about");
 var galleryRouter = require("./routes/gallery");
+var partnersRouter = require("./routes/partners");
 
 var app = express();
 app.use(cors());
@@ -43,6 +44,7 @@ app.use("/constuctor", constructorRouter);
 app.use("/question", questionRouter);
 app.use("/about", aboutRouter);
 app.use("/gallery", galleryRouter);
+app.use("/partners", partnersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
