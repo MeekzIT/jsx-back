@@ -27,6 +27,9 @@ module.exports = (sequelize, DataTypes) => {
       showIn: DataTypes.BOOLEAN,
       width: DataTypes.STRING,
       height: DataTypes.STRING,
+      mobileImage: DataTypes.STRING,
+      mobileWidth: DataTypes.STRING,
+      mobileHeight: DataTypes.STRING,
     },
     {
       sequelize,

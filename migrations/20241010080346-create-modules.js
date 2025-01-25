@@ -1,61 +1,64 @@
-'use strict';
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Modules', {
+    await queryInterface.createTable("Modules", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       titleAm: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       titleRu: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       titleEn: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       titleGe: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       descAm: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       descRu: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       descEn: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       descGe: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       imageAm: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       imageRu: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       imageEn: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       imageGe: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+      },
+      constId: {
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Modules');
-  }
+    await queryInterface.dropTable("Modules");
+  },
 };

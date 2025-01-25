@@ -42,10 +42,19 @@ module.exports = {
       showIn: {
         type: Sequelize.BOOLEAN,
       },
-      width:  {
+      width: {
         type: Sequelize.STRING,
       },
-      height:  {
+      height: {
+        type: Sequelize.STRING,
+      },
+      mobileImage: {
+        type: Sequelize.STRING,
+      },
+      mobileWidth: {
+        type: Sequelize.STRING,
+      },
+      mobileHeight: {
         type: Sequelize.STRING,
       },
       image: {

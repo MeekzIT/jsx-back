@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       imageRu: DataTypes.TEXT,
       imageEn: DataTypes.TEXT,
       imageGe: DataTypes.TEXT,
+      constId: DataTypes.STRING,
     },
     {
       sequelize,

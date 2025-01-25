@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       descGe: DataTypes.TEXT,
       order: DataTypes.INTEGER,
       require: DataTypes.BOOLEAN,
+      withValue: DataTypes.BOOLEAN,
     },
     {
       sequelize,

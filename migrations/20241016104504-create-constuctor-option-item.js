@@ -42,6 +42,9 @@ module.exports = {
       require: {
         type: Sequelize.BOOLEAN,
       },
+      withValue: {
+        type: Sequelize.BOOLEAN,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
