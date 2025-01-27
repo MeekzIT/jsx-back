@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       src: DataTypes.STRING,
       width: DataTypes.STRING,
       height: DataTypes.STRING,
+      order: DataTypes.INTEGER,
     },
     {
       sequelize,
