@@ -57,6 +57,9 @@ module.exports = {
       mobileHeight: {
         type: Sequelize.STRING,
       },
+      order: {
+        type: Sequelize.INTEGER,
+      },
       image: {
         type: Sequelize.STRING,
       },

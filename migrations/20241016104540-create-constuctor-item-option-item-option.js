@@ -64,6 +64,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      order: {
+        type: Sequelize.INTEGER,
+      },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,

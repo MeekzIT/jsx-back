@@ -30,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       mobileImage: DataTypes.STRING,
       mobileWidth: DataTypes.STRING,
       mobileHeight: DataTypes.STRING,
+      order: DataTypes.INTEGER,
     },
     {
       sequelize,
