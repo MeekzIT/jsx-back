@@ -7,5 +7,6 @@ router.post("/destroy", adminMiddleware, controller.destroy);
 router.post("/edit", adminMiddleware, controller.edit);
 router.post("/", adminMiddleware, controller.create);
 router.get("/", controller.getAll);
+router.put("/reorder", controller.updateOrder);
 
 module.exports = router;
