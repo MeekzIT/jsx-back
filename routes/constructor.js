@@ -13,6 +13,12 @@ router.get("/single", controller.getOne);
 // -------------------- item --------------------
 router.post("/item", adminMiddleware, controller.createItem);
 router.post("/drag", adminMiddleware, controller.updateConstuctorItemsOrder);
+router.post(
+  "/drag-options",
+  adminMiddleware,
+  controller.updateConstuctorOptionOrder
+);
+
 router.post("/item/edit", adminMiddleware, controller.editItem);
 router.post("/item/destroy", adminMiddleware, controller.destroyItem);
 

@@ -219,18 +219,15 @@ const getPrice = async (req, res) => {
 
 const updateConstuctorItemsOrder = async (req, res) => {
   try {
-    const reorderedItems = req.body.items; // Expecting array of items with 'id', 'order', and their associated options
+    const reorderedItems = req.body.items;
 
     const updateItemPromises = reorderedItems.map(async (item) => {
       console.log(item.order, item.nameRu, "Item");
 
-      // Update the order for the Item
       await Item.update({ order: item.order }, { where: { id: item.id } });
 
-      // Find all Options related to this Item
       const options = await Option.findAll({ where: { itemId: item.id } });
 
-      // Update the order for each associated Option
       const updateOptionPromises = options.map(async (option, index) => {
         const optionsFromBody = reorderedItems.find((i) => i.id === item.id);
         const singleOption = optionsFromBody.ConstuctorItemOptions.find(
@@ -249,6 +246,65 @@ const updateConstuctorItemsOrder = async (req, res) => {
           );
 
           const updatedOption = await Option.update(
+            { order: singleOption.order },
+            { where: { id: option.id } }
+          );
+
+          console.log(updatedOption, "Update result for option");
+        } else {
+          console.log(`No update needed for Option ID: ${option.id}`);
+        }
+      });
+
+      await Promise.all(updateOptionPromises);
+    });
+
+    await Promise.all(updateItemPromises);
+
+    return res.json({ succes: true });
+  } catch (error) {
+    console.error("Something went wrong", error);
+    return res
+      .status(500)
+      .json({ succes: false, message: "Internal server error" });
+  }
+};
+
+const updateConstuctorOptionOrder = async (req, res) => {
+  try {
+    const reorderedItems = req.body.items;
+
+    const updateItemPromises = reorderedItems.map(async (item) => {
+      console.log(reorderedItems, item.order, item.nameRu, "Item");
+
+      await OptionItem.update(
+        { order: item.order },
+        { where: { id: item.id } }
+      );
+
+      const options = await ItemOption.findAll({ where: { itemId: item.id } });
+      // console.log(options, "options");
+
+      const updateOptionPromises = options.map(async (option, index) => {
+        const optionsFromBody = reorderedItems.find((i) => i.id === item.id);
+
+        const singleOption =
+          optionsFromBody.ConstuctorItemOptionItemOptions.find(
+            (y) => y.id === option.id
+          );
+
+        console.log(
+          `Updating Option ID: ${option.id} ${option.nameRu} with new order: ${singleOption.order}`,
+          `Current Option order in DB: ${option.order}`
+        );
+
+        // Only update if the order has actually changed
+        if (singleOption.order !== option.order) {
+          console.log(
+            `Updating Option ID: ${option.id},${option.nameRu} current order: ${option.order}, new order: ${singleOption.order}`
+          );
+
+          const updatedOption = await ItemOption.update(
             { order: singleOption.order },
             { where: { id: option.id } }
           );
@@ -536,4 +592,5 @@ module.exports = {
   editOrder,
   deleteOrder,
   getAllOrders,
+  updateConstuctorOptionOrder,
 };
