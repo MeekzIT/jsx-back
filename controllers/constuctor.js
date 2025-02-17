@@ -105,7 +105,10 @@ const getOne = async (req, res) => {
           ],
         },
       ],
-      order: [[Item, "order", "ASC"]], // Correct way to order by Item.order
+      order: [
+        [ConstuctorItems, "order", "ASC"],
+        [ConstuctorItemOptions, "order", "ASC"],
+      ], // Correct way to order by Item.order
     });
 
     return res.json({ succes: true, data: service });
