@@ -106,7 +106,7 @@ const getOne = async (req, res) => {
         },
       ],
       order: [
-        [Item, "order", "ASC"],
+        // [Item, "order", "ASC"],
         [Option, "order", "ASC"],
       ], // Correct way to order by Item.order
     });
