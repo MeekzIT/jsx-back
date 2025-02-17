@@ -61,30 +61,6 @@ const getAll = async (req, res) => {
   }
 };
 
-const getOne = async (req, res) => {
-  try {
-    const { id } = req.query;
-    const service = await Constructor.findOne({
-      where: { id },
-      include: [
-        {
-          model: Item,
-          include: {
-            model: Option,
-            include: {
-              model: OptionItem,
-            },
-          },
-        },
-      ],
-      order: [[{ model: Item }, "order", "ASC"]],
-    });
-    return res.json({ succes: true, data: service });
-  } catch (e) {
-    console.log("something went wro ng", e);
-  }
-};
-
 // const getOne = async (req, res) => {
 //   try {
 //     const { id } = req.query;
@@ -93,27 +69,51 @@ const getOne = async (req, res) => {
 //       include: [
 //         {
 //           model: Item,
-//           include: [
-//             {
-//               model: Option,
-//               include: [
-//                 {
-//                   model: OptionItem,
-//                 },
-//               ],
+//           include: {
+//             model: Option,
+//             include: {
+//               model: OptionItem,
 //             },
-//           ],
+//           },
 //         },
 //       ],
-//       order: [[Item, "order", "ASC"]], // Correct way to order by Item.order
+//       order: [[{ model: Item }, "order", "ASC"]],
 //     });
-
-//     return res.json({ success: true, data: service });
+//     return res.json({ succes: true, data: service });
 //   } catch (e) {
-//     console.error("Something went wrong", e);
-//     res.status(500).json({ success: false, message: "Internal Server Error" });
+//     console.log("something went wro ng", e);
 //   }
 // };
+
+const getOne = async (req, res) => {
+  try {
+    const { id } = req.query;
+    const service = await Constructor.findOne({
+      where: { id },
+      include: [
+        {
+          model: Item,
+          include: [
+            {
+              model: Option,
+              include: [
+                {
+                  model: OptionItem,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      order: [[Item, "order", "ASC"]], // Correct way to order by Item.order
+    });
+
+    return res.json({ succes: true, data: service });
+  } catch (e) {
+    console.error("Something went wrong", e);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+};
 
 const getPrice = async (req, res) => {
   try {
