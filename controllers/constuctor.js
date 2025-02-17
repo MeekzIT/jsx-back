@@ -97,6 +97,7 @@ const getOne = async (req, res) => {
           include: [
             {
               model: Option,
+              order: [["order", "ASC"]],
               include: [
                 {
                   model: OptionItem,
