@@ -93,6 +93,7 @@ const getOne = async (req, res) => {
       include: [
         {
           model: Item,
+          order: [["order", "ASC"]],
           include: [
             {
               model: Option,
@@ -103,12 +104,11 @@ const getOne = async (req, res) => {
               ],
             },
           ],
-          order: [["order", "ASC"]], // Правильное место для сортировки
         },
       ],
     });
 
-    return res.json({ success: true, data: service });
+    return res.json({ succes: true, data: service });
   } catch (e) {
     console.error("Something went wrong", e);
     res.status(500).json({ success: false, message: "Internal Server Error" });
